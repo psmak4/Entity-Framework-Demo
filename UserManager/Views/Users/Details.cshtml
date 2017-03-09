@@ -1,0 +1,30 @@
+﻿@model UserManager.Models.User
+
+@{
+	ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+	<h4>User</h4>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt>Username</dt>
+		<dd>@Model.Username</dd>
+
+		<dt>Posts</dt>
+		<dd>
+			<ul>
+				@foreach(var post in Model.Posts)
+				{
+					<li><a href="@Url.Action("Details", "Posts", new { id = post.PostId })">@post.Title</a></li>
+				}
+			</ul>
+		</dd>
+	</dl>
+</div>
+<p>
+	@Html.ActionLink("Edit", "Edit", new { id = Model.UserId }) |
+	@Html.ActionLink("Back to List", "Index")
+</p>
